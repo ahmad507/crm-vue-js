@@ -19,6 +19,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'role',
+        'color',
+        'picture',
         'password',
     ];
 
@@ -40,4 +43,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+     /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    
+    public function getPictureAttribute($value){
+        if($value){
+            return asset('users/images/'.$value);
+        }else{
+            return asset('users/images/no-image.png');
+        }
+    }
 }
