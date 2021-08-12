@@ -91,9 +91,12 @@ class RegisterController extends Controller
 
         /**Make Default Avatar*/
         $path = 'users/images/';
-        $fontPath = public_path('fonts/Olicity.ttf');
+        $fontPath = public_path('fonts/Oliciy.ttf');
+        $char = strtoupper($request->name[0]);
         $newAvatarName = rand(12,34353).time().'_avatar.png';
         $dest = $path.$newAvatarName;
+
+
         $createAvatar = makeAvatar($fontPath,$dest,$char);
         $picture = $createAvatar == true ? $newAvatarName : '';
 
